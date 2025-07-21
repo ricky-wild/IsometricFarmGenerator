@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -182,27 +182,7 @@ namespace IsometricFarmGenerator
         public void SetCellSurfaceObj(ref GameObject surfaceObj, CellSurfObjType cellSurfObjType, bool ignoreInitRemove)//, int curFieldId)//, SurfaceObj surfObj) //=> _surfaceObjCached = surfaceObj;
         {
 
-            if (!ignoreInitRemove) RemoveSurfaceObj();
-
-            if (surfaceObj == null) return;//_surfObjCached
-
-            for (int i = 0; i < _surfaceObjCached.Length; i++)
-            {
-                if (_surfaceObjCached[i] == null)
-                {
-                    _surfaceObjCached[i] = surfaceObj;
-
-                    _surfObjCached[i] = _surfaceObjCached[i].GetComponent<SurfaceObj>();
-                    if (_surfObjCached[i] != null) 
-                        _surfObjCached[i]._cellSurfaceObjType = cellSurfObjType;
-
-                    _currentPlacedSurfaceObj = cellSurfObjType;
-
-                     
-
-                    i = _surfaceObjCached.Length;//return; //break loop.
-                }
-            }
+            //...ect
 
         }
 
