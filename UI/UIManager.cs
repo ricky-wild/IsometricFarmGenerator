@@ -1,4 +1,4 @@
-﻿
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -916,357 +916,11 @@ namespace IsometricFarmGenerator
         }
         public void RandomButtonPress()
         {
-            if (_fieldGenerator == null) return;
-
-            AudioManager.PlaySFX(AudioID.Audio_But_Click03_SFX);
-
-            int randDesc = wildlogicgames.Utilities.GetRandomNumberInt(0, 100);
-
-            if (randDesc < 50) _fieldCount = 3;
-            else _fieldCount = 4;
-            //_fieldCount = 4;
-
-            _fieldGenerator.SetFieldCount(_fieldCount);
-
-            //randDesc = wildlogicgames.Utilities.GetRandomNumberInt(0, 100);
-
-            for (int i = 0; i < _fieldCount; i++)
-            {
-                randDesc = wildlogicgames.Utilities.GetRandomNumberInt(0, 100);
-
-                if (randDesc >= 0 && randDesc < 25)
-                {
-                    _fieldGridTooAdd[i].X = 15;
-                    _fieldGridTooAdd[i].Y = 15;
-                }
-                if (randDesc >= 25 && randDesc < 50)
-                {
-                    _fieldGridTooAdd[i].X = 20;
-                    _fieldGridTooAdd[i].Y = 20;
-                }
-                if (randDesc >= 50 && randDesc < 75)
-                {
-                    _fieldGridTooAdd[i].X = 5;
-                    _fieldGridTooAdd[i].Y = 5;
-                }
-                if (randDesc >= 75 && randDesc <= 100)
-                {
-                    _fieldGridTooAdd[i].X = 10;
-                    _fieldGridTooAdd[i].Y = 10;
-                }
-            }
-
-            if (randDesc >= 0 && randDesc < 33)
-            {
-                _selectedFieldSoilType = "Peat Soil";
-                _fieldGenerator.SetFieldType(FieldGridCellID.FieldGridCell_Soil_Peat);
-                for (int i = 0; i < _fieldCount; i++) AddFieldGridSoil(i, FieldGridCellID.FieldGridCell_Soil_Peat);
-            }
-            if (randDesc >= 33 && randDesc <= 66)
-            {
-                _selectedFieldSoilType = "Light Soil";
-                _fieldGenerator.SetFieldType(FieldGridCellID.FieldGridCell_Soil_Light);
-                for (int i = 0; i < _fieldCount; i++) AddFieldGridSoil(i, FieldGridCellID.FieldGridCell_Soil_Light);
-            }
-            if (randDesc > 66 && randDesc <= 100)
-            {
-                _selectedFieldSoilType = "Heavy Soil";
-                _fieldGenerator.SetFieldType(FieldGridCellID.FieldGridCell_Soil_Heavy);
-                for (int i = 0; i < _fieldCount; i++) AddFieldGridSoil(i, FieldGridCellID.FieldGridCell_Soil_Heavy);
-            }
-
-
-            //randDesc = wildlogicgames.Utilities.GetRandomNumberInt(0, 100);
-            //if (randDesc >= 0 && randDesc < 33)
-            //{
-            //    _selectedFieldSoilType = "Light Soil";
-            //}
-            //if (randDesc >= 33 && randDesc <= 66)
-            //{
-            //    _selectedFieldSoilType = "Heavy Soil";
-            //}
-            //if (randDesc > 66 && randDesc <= 100)
-            //{
-            //    _selectedFieldSoilType = "Peat Soil";
-            //}
-
-
-            for (int i = 0; i < _fieldCount; i++)
-            {
-                if (_selectedFieldSoilType == "Peat Soil") AddFieldGridSoil(i, FieldGridCellID.FieldGridCell_Soil_Peat);
-                if (_selectedFieldSoilType == "Light Soil") AddFieldGridSoil(i, FieldGridCellID.FieldGridCell_Soil_Light);
-                if (_selectedFieldSoilType == "Heavy Soil") AddFieldGridSoil(i, FieldGridCellID.FieldGridCell_Soil_Heavy);
-            }
-
-
-
-
-            for (int i = 0; i < _fieldCount; i++)
-            {
-                //
-
-                randDesc = wildlogicgames.Utilities.GetRandomNumberInt(0, 100);
-
-                if (randDesc >= 0 && randDesc < 10)
-                {
-                    _selectedFieldCropType = "None (Saps)";
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_None);
-
-                }
-                if (randDesc >= 10 && randDesc < 25)
-                {
-                    _selectedFieldCropType = "SugarBeat";
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_SugarBeat);
-
-                }
-                if (randDesc >= 25 && randDesc < 50)
-                {
-                    _selectedFieldCropType = "Wheat";
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_Wheat);
-                }
-                if (randDesc >= 50 && randDesc < 75)
-                {
-                    _selectedFieldCropType = "Oil Seed Rape";
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_OilSeedRape);
-                }
-                if (randDesc >= 75 && randDesc <= 100)
-                {
-                    _selectedFieldCropType = "Beans";
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_Beans);
-                }
-
-                if (_selectedFieldCropType == "None (Saps)")
-                {
-                    _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_None;
-                }
-                if (_selectedFieldCropType == "Wheat")
-                {
-                    _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_Wheat;
-                }
-                if (_selectedFieldCropType == "Oil Seed Rape")
-                {
-                    _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_OilSeedRape;
-                }
-                if (_selectedFieldCropType == "Beans")
-                {
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_Beans);
-                    _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_Beans;
-                }
-                if (_selectedFieldCropType == "SugarBeat")
-                {
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_SugarBeat);
-                    _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_SugarBeat;
-                }
-            }
-
-
-
-
-            //SetButton(UIButtonID.Button_Generate, false);
-            DisableAllUI();
-
-            //SetFieldOutputButtons(true);
-            _logoRawImgUI.gameObject.SetActive(true);
-            _logoObj.gameObject.SetActive(true);
-            _logoObj.SetLogo(LogoStateID.Logo_White_Text);
-            FPSDisplay(true);
-
-            //Allow 10 seconds before enabling access to the tool box windows again.
-            StartTimer(UITimerID.Timer_Init_Logo_Pos_Change);
-
-            for (int i = 0; i < _fieldCount; i++)
-            {
-                _fieldGenerator.AddFieldGrid(i, _fieldGridTooAdd[i]);
-            }
-
-            _fieldGenerator.InitFieldGeneration();
+            //...ect
         }
         public void DefaultButtonPress()
         {
-            if (_fieldGenerator == null) return;
-
-            AudioManager.PlaySFX(AudioID.Audio_But_Click03_SFX);
-
-            _usingDefaultSetup = true;
-            _cameraManager.SetDefaultSetupFlag(_usingDefaultSetup);
-
-            int randDesc = wildlogicgames.Utilities.GetRandomNumberInt(0, 100);
-
-            _fieldCount = 4;
-            _fieldGenerator.SetFieldCount(_fieldCount);
-
-            //randDesc = wildlogicgames.Utilities.GetRandomNumberInt(0, 100);
-
-            for (int i = 0; i < _fieldCount; i++)
-            {
-                _fieldGridTooAdd[i].X = 22;
-                _fieldGridTooAdd[i].Y = 22;
-            }
-
-            if (randDesc >= 0 && randDesc < 33)
-            {
-                _selectedFieldSoilType = "Peat Soil";
-                _fieldGenerator.SetFieldType(FieldGridCellID.FieldGridCell_Soil_Peat);
-                for (int i = 0; i < _fieldCount; i++) AddFieldGridSoil(i, FieldGridCellID.FieldGridCell_Soil_Peat);
-            }
-            if (randDesc >= 33 && randDesc <= 66)
-            {
-                _selectedFieldSoilType = "Light Soil";
-                _fieldGenerator.SetFieldType(FieldGridCellID.FieldGridCell_Soil_Light);
-                for (int i = 0; i < _fieldCount; i++) AddFieldGridSoil(i, FieldGridCellID.FieldGridCell_Soil_Light);
-            }
-            if (randDesc > 66 && randDesc <= 100)
-            {
-                _selectedFieldSoilType = "Heavy Soil";
-                _fieldGenerator.SetFieldType(FieldGridCellID.FieldGridCell_Soil_Heavy);
-                for (int i = 0; i < _fieldCount; i++) AddFieldGridSoil(i, FieldGridCellID.FieldGridCell_Soil_Heavy);
-            }
-
-
-
-            for (int i = 0; i < _fieldCount; i++)
-            {
-                if (_selectedFieldSoilType == "Peat Soil") AddFieldGridSoil(i, FieldGridCellID.FieldGridCell_Soil_Peat);
-                if (_selectedFieldSoilType == "Light Soil") AddFieldGridSoil(i, FieldGridCellID.FieldGridCell_Soil_Light);
-                if (_selectedFieldSoilType == "Heavy Soil") AddFieldGridSoil(i, FieldGridCellID.FieldGridCell_Soil_Heavy);
-            }
-
-
-            //_selectedFieldCropType = "None (Saps)";
-            //_selectedFieldCropType = "Wheat";
-            //_selectedFieldCropType = "Oil Seed Rape";
-            //_selectedFieldCropType = "Beans";
-
-            //for (int i = 0; i < _fieldCount; i++)
-            //{
-            //    if (_selectedFieldCropType == "None (Saps)")
-            //    {
-            //        _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_None);
-            //        _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_None;
-            //    }
-            //    if (_selectedFieldCropType == "Wheat")
-            //    {
-            //        _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_Wheat);
-            //        _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_Wheat;
-            //    }
-            //    if (_selectedFieldCropType == "Oil Seed Rape")
-            //    {
-            //        _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_OilSeedRape);
-            //        _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_OilSeedRape;
-            //    }
-            //    if (_selectedFieldCropType == "Beans")
-            //    {
-            //        _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_Beans);
-            //        _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_Beans;
-            //    }
-            //}
-            for (int i = 0; i < _fieldCount; i++)
-            {
-                //
-
-                randDesc = wildlogicgames.Utilities.GetRandomNumberInt(0, 100);
-
-                if (randDesc >= 0 && randDesc < 6)
-                {
-                    _selectedFieldCropType = "None (Saps)";
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_None);
-
-                }
-                if (randDesc >= 6 && randDesc < 25)
-                {
-                    _selectedFieldCropType = "Oil Seed Rape";
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_OilSeedRape);
-                }
-                if (randDesc >= 25 && randDesc < 40)
-                {
-                    _selectedFieldCropType = "Wheat";
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_Wheat);
-                }
-                if (randDesc >= 40 && randDesc < 55)
-                {
-                    _selectedFieldCropType = "Beans";
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_Beans);
-                }
-                if (randDesc >= 55 && randDesc < 75)
-                {
-                    _selectedFieldCropType = "SugarBeat";
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_SugarBeat);
-                }
-                if (randDesc >= 75 && randDesc < 90)
-                {
-                    _selectedFieldCropType = "Beans";
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_Beans);
-                }
-                if (randDesc >= 90 && randDesc <= 100)
-                {
-                    _selectedFieldCropType = "SugarBeat";
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_SugarBeat);
-                }
-
-                if (_selectedFieldCropType == "None (Saps)")
-                {
-                    _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_None;
-                }
-                if (_selectedFieldCropType == "Wheat")
-                {
-                    _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_Wheat;
-                }
-                if (_selectedFieldCropType == "Oil Seed Rape")
-                {
-                    _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_OilSeedRape;
-                }
-                if (_selectedFieldCropType == "Beans")
-                {
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_Beans);
-                    _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_Beans;
-                }
-                if (_selectedFieldCropType == "SugarBeat")
-                {
-                    _fieldGenerator.SetCropType(SurfaceGridCellID.Surface_Type_SugarBeat);
-                    _fieldGridTooAdd[i].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_SugarBeat;
-                }
-            }
-
-
-            //ENSURE AT LEAST 1 OF THESE FIELDS IS A WHEAT CROP TYPE.
-            int j = 0;
-            for (int i = 0; i < _fieldCount; i++)
-            {
-                if (_fieldGridTooAdd[i].SURFACE_TYPE != SurfaceGridCellID.Surface_Type_Wheat)
-                    j++;
-
-            }
-            //int k = 0;
-            if (j == _fieldCount)
-            {
-                //NO WHEAT CROP FIELDS
-                _fieldGridTooAdd[0].SURFACE_TYPE = SurfaceGridCellID.Surface_Type_Wheat;
-
-                //randDesc = wildlogicgames.Utilities.GetRandomNumberInt(0, 100);
-                //if (randDesc >= 0 && randDesc < 25) k = 0;
-            }
-
-
-            //SetButton(UIButtonID.Button_Generate, false);
-            DisableAllUI();
-
-            //SetFieldOutputButtons(true);
-            _logoRawImgUI.gameObject.SetActive(true);
-            _logoObj.gameObject.SetActive(true);
-            _logoObj.SetLogo(LogoStateID.Logo_White_Text);
-            FPSDisplay(true);
-
-            //Allow 10 seconds before enabling access to the tool box windows again.
-            StartTimer(UITimerID.Timer_Init_Logo_Pos_Change);
-
-            for (int i = 0; i < _fieldCount; i++)
-            {
-                _fieldGenerator.AddFieldGrid(i, _fieldGridTooAdd[i]);
-            }
-
-            _fieldGenerator.InitFieldGeneration();
-
-
+            //...ect
         }
         public void AddFieldsButtonPress()
         {
@@ -1284,30 +938,7 @@ namespace IsometricFarmGenerator
 
             SetWindow(UIWindowID.Window_Crops_1, true);
             SetWindow(UIWindowID.Window_Control, false);
-            //int count = int.Parse(_selectedFieldCount);
 
-
-            //switch (count)
-            //{
-            //    case 1:
-            //        SetWindow(UIWindowID.Window_Crops_1, true);
-            //        break;
-            //    case 2:
-            //        SetWindow(UIWindowID.Window_Crops_1, true);
-            //        SetWindow(UIWindowID.Window_Crops_2, true);
-            //        break;
-            //    case 3:
-            //        SetWindow(UIWindowID.Window_Crops_1, true);
-            //        SetWindow(UIWindowID.Window_Crops_2, true);
-            //        SetWindow(UIWindowID.Window_Crops_3, true);
-            //        break;
-            //    case 4:
-            //        SetWindow(UIWindowID.Window_Crops_1, true);
-            //        SetWindow(UIWindowID.Window_Crops_2, true);
-            //        SetWindow(UIWindowID.Window_Crops_3, true);
-            //        SetWindow(UIWindowID.Window_Crops_4, true);
-            //        break;
-            //}
         }
         public void AddTillageButtonPress()
         {
@@ -1317,30 +948,7 @@ namespace IsometricFarmGenerator
             SetWindow(UIWindowID.Window_Tillage_1, true);
             SetWindow(UIWindowID.Window_Control, false);
 
-            //int count = int.Parse(_selectedFieldCount);
 
-
-            //switch (count)
-            //{
-            //    case 1:
-            //        SetWindow(UIWindowID.Window_Tillage_1, true);
-            //        break;
-            //    case 2:
-            //        SetWindow(UIWindowID.Window_Tillage_1, true);
-            //        SetWindow(UIWindowID.Window_Tillage_2, true);
-            //        break;
-            //    case 3:
-            //        SetWindow(UIWindowID.Window_Tillage_1, true);
-            //        SetWindow(UIWindowID.Window_Tillage_2, true);
-            //        SetWindow(UIWindowID.Window_Tillage_3, true);
-            //        break;
-            //    case 4:
-            //        SetWindow(UIWindowID.Window_Tillage_1, true);
-            //        SetWindow(UIWindowID.Window_Tillage_2, true);
-            //        SetWindow(UIWindowID.Window_Tillage_3, true);
-            //        SetWindow(UIWindowID.Window_Tillage_4, true);
-            //        break;
-            //}
         }
         public void ConfirmFieldTotalButtonPress()
         {
@@ -1352,19 +960,6 @@ namespace IsometricFarmGenerator
 
             
             SetButton(UIButtonID.Button_Confirm_Field_1, true, null); //Prevent confirmation without selecting dropdown option. We set true there.
-            //SetButton(UIButtonID.Button_Confirm_Field_2, false, null);
-            //SetButton(UIButtonID.Button_Confirm_Field_3, false, null);
-            //SetButton(UIButtonID.Button_Confirm_Field_4, false, null);
-
-            //SetButton(UIButtonID.Button_Confirm_Crops_1, false, null); //Prevent confirmation without selecting dropdown option. We set true there.
-            //SetButton(UIButtonID.Button_Confirm_Crops_2, false, null);
-            //SetButton(UIButtonID.Button_Confirm_Crops_3, false, null);
-            //SetButton(UIButtonID.Button_Confirm_Crops_4, false, null);
-
-            //SetButton(UIButtonID.Button_Confirm_Tillage_1, false, null); //Prevent confirmation without selecting dropdown option. We set true there.
-            //SetButton(UIButtonID.Button_Confirm_Tillage_2, false, null);
-            //SetButton(UIButtonID.Button_Confirm_Tillage_3, false, null);
-            //SetButton(UIButtonID.Button_Confirm_Tillage_4, false, null);
 
 
             int count = int.Parse(_selectedFieldCount);
@@ -1396,27 +991,7 @@ namespace IsometricFarmGenerator
 
             SetWindow(UIWindowID.Window_Field_Start, false);
             SetWindow(UIWindowID.Window_Field_1, true);
-            //switch (count)
-            //{
-            //    case 1:
-            //        SetWindow(UIWindowID.Window_Field_1, true);
-            //        break;
-            //    case 2:
-            //        SetWindow(UIWindowID.Window_Field_1, true);
-            //        SetWindow(UIWindowID.Window_Field_2, true);
-            //        break;
-            //    case 3:
-            //        SetWindow(UIWindowID.Window_Field_1, true);
-            //        SetWindow(UIWindowID.Window_Field_2, true);
-            //        SetWindow(UIWindowID.Window_Field_3, true);
-            //        break;
-            //    case 4:
-            //        SetWindow(UIWindowID.Window_Field_1, true);
-            //        SetWindow(UIWindowID.Window_Field_2, true);
-            //        SetWindow(UIWindowID.Window_Field_3, true);
-            //        SetWindow(UIWindowID.Window_Field_4, true);
-            //        break;
-            //}
+
 
         }
         public void ConfirmFieldButtonPress(int fieldWinId)
@@ -1810,29 +1385,7 @@ namespace IsometricFarmGenerator
 
         private void ProcessGridCellClick(Vector3 worldPoint)
         {
-            _cachedCellWidth = _fieldGenerator.GetCellWidth();
-
-			//_originGridCellPos = _fieldGenerator.GetGridStartPosition() - new Vector3(cellSize / 2f, 0f, cellSize / 2f);
-
-			_relativeClickedCellPos = worldPoint - _originGridCellPos;
-
-
-
-            _cachedClickedX = Mathf.FloorToInt(_relativeClickedCellPos.x / _cachedCellWidth);
-            _cachedClickedY = Mathf.FloorToInt(_relativeClickedCellPos.z / _cachedCellWidth); // Assuming grid is laid on XZ plane
-
-            // Bounds check
-            if (_cachedClickedX >= 0 && _cachedClickedX < _fieldGenerator.GetMaxGridX() && 
-                _cachedClickedY >= 0 && _cachedClickedY < _fieldGenerator.GetMaxGridY())
-            {
-                _cachedClickedCell = _fieldGenerator.GetGridCellObj(_cachedClickedX, _cachedClickedY);
-                if (_cachedClickedCell != null)
-                {
-                    //ResetAttrributeText();
-                    _cachedClickedCell.CellOnClick();
-                    
-                }
-            }
+            //...ect
         }
 
         private void CharacterDialogueUIUpdate()
@@ -1850,231 +1403,8 @@ namespace IsometricFarmGenerator
                 }
 
             }
-            
-            if (EventManager.GetEventFlag() == EventFlagID.EventFlag_Initial_Character_Dialogue_Init)
-            {
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_None)
-                {
-                    int fieldId = RulescopeManager._instance.GetRulescope().GetSelectedField();
-                    _fieldGenerator.DisableUnselectedFieldCrops(fieldId);
+            //...ect
 
-
-                    SetWindow(UIWindowID.Window_Side_Panel, false);
-                    _characterDialogueText.text = _characterDialogueStr[0];
-                    _timers[(int)UITimerID.Timer_Dialogue].StartTimer(4.0f);
-                    CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Welcome);
-                    //CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Ending);
-                }
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_Welcome)
-                {
-                    if (_timers[(int)UITimerID.Timer_Dialogue].HasTimerFinished(true))
-                    {
-                        SetWindow(UIWindowID.Window_Character_Face, true);
-
-                        _characterDialogueText.text = _characterDialogueStr[1];
-                        _timers[(int)UITimerID.Timer_Dialogue].Reset();
-                        _timers[(int)UITimerID.Timer_Dialogue].StartTimer(6.0f);
-                        CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Speech_A);
-                    }
-                }
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_Speech_A)
-                {
-                    if (_timers[(int)UITimerID.Timer_Dialogue].HasTimerFinished(true))
-                    {
-                        _characterDialogueText.text = _characterDialogueStr[2];
-                        _timers[(int)UITimerID.Timer_Dialogue].Reset();
-                        _timers[(int)UITimerID.Timer_Dialogue].StartTimer(6.0f);
-                        CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Speech_B);
-                    }
-                }
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_Speech_B)
-                {
-                    if (_timers[(int)UITimerID.Timer_Dialogue].HasTimerFinished(true))
-                    {
-                        _characterDialogueText.text = _characterDialogueStr[3];
-                        _timers[(int)UITimerID.Timer_Dialogue].Reset();
-                        _timers[(int)UITimerID.Timer_Dialogue].StartTimer(6.0f);
-                        CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Speech_C);
-                    }
-                }
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_Speech_C)
-                {
-                    if (_timers[(int)UITimerID.Timer_Dialogue].HasTimerFinished(true))
-                    {
-                        _characterDialogueText.text = _characterDialogueStr[4];
-                        _timers[(int)UITimerID.Timer_Dialogue].Reset();
-                        _timers[(int)UITimerID.Timer_Dialogue].StartTimer(6.0f);
-                        CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Speech_D);
-                    }
-                }
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_Speech_D)
-                {
-                    if (_timers[(int)UITimerID.Timer_Dialogue].HasTimerFinished(true))
-                    {
-                        _characterDialogueText.text = _characterDialogueStr[5];
-                        _timers[(int)UITimerID.Timer_Dialogue].Reset();
-                        _timers[(int)UITimerID.Timer_Dialogue].StartTimer(6.0f);
-                        CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Speech_E);
-                    }
-                }
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_Speech_E)
-                {
-                    if (_timers[(int)UITimerID.Timer_Dialogue].HasTimerFinished(true))
-                    {
-                        _characterDialogueText.text = _characterDialogueStr[6];
-                        _timers[(int)UITimerID.Timer_Dialogue].Reset();
-                        _timers[(int)UITimerID.Timer_Dialogue].StartTimer(6.0f);
-                        CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Speech_F);
-                    }
-                }
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_Speech_F)
-                {
-                    if (_timers[(int)UITimerID.Timer_Dialogue].HasTimerFinished(true))
-                    {
-                        _characterDialogueText.text = _characterDialogueStr[7];
-                        _timers[(int)UITimerID.Timer_Dialogue].Reset();
-                        _timers[(int)UITimerID.Timer_Dialogue].StartTimer(6.0f);
-                        CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Speech_G);
-                    }
-                }
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_Speech_G)
-                {
-                    if (_timers[(int)UITimerID.Timer_Dialogue].HasTimerFinished(true))
-                    {
-                        _characterDialogueText.text = _characterDialogueStr[8];
-                        _timers[(int)UITimerID.Timer_Dialogue].Reset();
-                        _timers[(int)UITimerID.Timer_Dialogue].StartTimer(6.0f);
-                        CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Ending);
-                        
-                    }
-                }
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_Ending)
-                {
-                    if (_timers[(int)UITimerID.Timer_Dialogue].HasTimerFinished(true))
-                    {
-                        _characterDialogueText.text = "...";
-                        CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Exit);
-                        SetWindow(UIWindowID.Window_Dialogue_Panel, false);
-                        SetWindow(UIWindowID.Window_Character_Face, false);
-
-                        SetWindow(UIWindowID.Window_Side_Panel, true);
-                        SetWindow(UIWindowID.Window_CurField_Panel, true);
-                        SetWindow(UIWindowID.Window_Energy_Cost, true);
-                        SetWindow(UIWindowID.Window_Time_Line, true);
-
-                        SetWindow(UIWindowID.Window_Biodiversity_Rating, true);
-                        SetWindow(UIWindowID.Window_Yield_Rating, true);
-                        SetWindow(UIWindowID.Window_SoilHealth_Rating, true);
-                        SetWindow(UIWindowID.Window_FuelFibreYield_Rating, true);
-                        SetWindow(UIWindowID.Window_CarbonSequestration_Rating, true);
-                        SetWindow(UIWindowID.Window_AsetheticRecreation_Rating, true);
-
-                        SetWindow(UIWindowID.Window_GoBack_FieldViews, true);
-                        SetWindow(UIWindowID.Window_Toolbox_Enable, true);
-
-                        _fieldGenerator.RenableAllFieldCrops();
-
-                        //_fieldGenerator._cameraManager.EnableStartFieldViewsPoint();
-                        //GoBackFieldViewButtonPress();
-                        int width = _fieldGridTooAdd[_curSelectedFieldId - 1].X;
-                        _cameraManager.EnableFieldStartPivotPoint(_curSelectedFieldId-1, width, _usingDefaultSetup);
-                    }
-                }
-            }
-
-            if (EventManager.GetEventFlag() == EventFlagID.EventFlag_Hedgerow_FullPlacement_Character_Dialogue_Init)
-            {
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_None)
-                {
-                    _timers[(int)UITimerID.Timer_Dialogue].Reset();
-                    _timers[(int)UITimerID.Timer_Dialogue].StartTimer(3.0f);
-
-                    SetWindow(UIWindowID.Window_Character_Face, true);
-                    SetWindow(UIWindowID.Window_Dialogue_Panel, true);
-                    _characterDialogueText.text = _characterDialogueStr[11];
-
-                    int fieldId = RulescopeManager._instance.GetRulescope().GetSelectedField();
-                    _fieldGenerator.DisableUnselectedFieldCrops(fieldId);
-
-                    CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Hedgerow_Full_Speech_A);
-                }
-
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_Hedgerow_Full_Speech_A)
-                {
-                    if (_timers[(int)UITimerID.Timer_Dialogue].HasTimerFinished(true))
-                    {
-                        _timers[(int)UITimerID.Timer_Dialogue].Reset();
-                        _timers[(int)UITimerID.Timer_Dialogue].StartTimer(3.0f);
-
-                        int x = EventManager.GetGridCellClicked_X();
-                        int y = EventManager.GetGridCellClicked_Y();
-                        string borderIdStr = "";
-
-                        int id = RulescopeManager._instance.GetRulescope().GetSelectedField();
-
-                        if (id != _curSelectedFieldId)
-						{
-                            if (RulescopeManager._instance.GetRulescope().GetCellBorderTypeByID(x, y, id) == CellBorderType.Cell_Border_Left)
-                                borderIdStr = "Left";
-                            if (RulescopeManager._instance.GetRulescope().GetCellBorderTypeByID(x, y, id) == CellBorderType.Cell_Border_Right)
-                                borderIdStr = "Right";
-                            if (RulescopeManager._instance.GetRulescope().GetCellBorderTypeByID(x, y, id) == CellBorderType.Cell_Border_Bottom)
-                                borderIdStr = "Bottom";
-                            if (RulescopeManager._instance.GetRulescope().GetCellBorderTypeByID(x, y, id) == CellBorderType.Cell_Border_Top)
-                                borderIdStr = "Top";
-                        }
-                        else
-						{
-
-                        }
-
-
-                        _characterDialogueStr[12] = "You completed the " + borderIdStr + " field border. This hedgerow placement will help.";
-
-                        _characterDialogueText.text = _characterDialogueStr[12];
-
-                        CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Hedgerow_Full_Speech_B);
-                    }
-                        
-                }
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_Hedgerow_Full_Speech_B)
-                {
-                    if (_timers[(int)UITimerID.Timer_Dialogue].HasTimerFinished(true))
-                    {
-                        _timers[(int)UITimerID.Timer_Dialogue].Reset();
-                        _timers[(int)UITimerID.Timer_Dialogue].StartTimer(3.0f);
-
-                        int fieldId = _curSelectedFieldId;
-
-                        _characterDialogueText.text = "Field #" + fieldId.ToString() + " is beginning to shape up. Keep going!";
-
-                        
-
-                        CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Ending);
-                    }
-                }
-                if (CharacterManager.GetCharacterDialogueID() == CharacterDialogueID.Character_Dialogue_Ending)
-                {
-                    if (_timers[(int)UITimerID.Timer_Dialogue].HasTimerFinished(true))
-                    {
-                        _characterDialogueText.text = "...";
-
-                        SetWindow(UIWindowID.Window_Character_Face, false);
-                        SetWindow(UIWindowID.Window_Dialogue_Panel, false);
-
-                        _fieldGenerator.RenableAllFieldCrops();
-
-                        CharacterManager.SetCharacterDialogueID(CharacterDialogueID.Character_Dialogue_Exit);
-
-                        int correctHedgerowsMade = RulescopeManager._instance.GetRulescope().GetCorrectHedgerowPlacementCount();
-
-                        //SetWindow(UIWindowID.Window_Badge_Reward, true);
-                        SetRewardUIWindow(true, correctHedgerowsMade);
-                        //_badgeRewardController.PlayIntroBadgeAnimation();
-
-                    }
-                }
-            }
         }
         private void TimerUpdate()
 		{
@@ -2106,33 +1436,20 @@ namespace IsometricFarmGenerator
 
             if (_timers[(int)UITimerID.Timer_Attrribute_Text_Display].HasTimerFinished(true))
             {
-                
+             
                 ResetAttrributeText();
             }
 
             if (_timers[(int)UITimerID.Timer_Initial_Character_Welcome].HasTimerFinished(true))
             {
-                _cameraManager.EnableTravelToCharacterPoint(CharacterManager.GetCurrentCharacterSpawnPos(), _fieldGridTooAdd[_curSelectedFieldId-1]);
-                //if (!EventManager.GetEventFlag(EventFlagID.EventFlag_Initial_Character_Camera_Process))
-                //_timers[(int)UITimerID.Timer_Initial_Character_Welcome].Reset();
-                //_timers[(int)UITimerID.Timer_Initial_Character_Welcome].StartTimer(6.0f);
+                _cameraManager.EnableTravelToCharacterPoint(
+                    CharacterManager.GetCurrentCharacterSpawnPos(), _fieldGridTooAdd[_curSelectedFieldId-1]);
+
             }
         }
         private void MouseCursorUpdate()
         {
-            //if (!_cursorActiveDic[(int)UICursorID.Cursor_Plat_Hedgerow]) return;
-
-
-            //_mousePositionCached = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            //_mousePositionCached.z = Camera.main.nearClipPlane + 1;//-14.0f;// 0f;
-            //_cursorObjs[(int)UICursorID.Cursor_Plat_Hedgerow].transform.position = _mousePositionCached;
-
-
-            //print("\n_mousePositionCached.x=" + _mousePositionCached.x);
-            //print("\n_mousePositionCached.y=" + _mousePositionCached.y);
-
-            //print("\nInput.mousePosition.x=" + Input.mousePosition.x);
-            //print("\nInput.mousePosition.y=" + Input.mousePosition.y);
+            //...ect
         }
 
 
@@ -2140,36 +1457,11 @@ namespace IsometricFarmGenerator
 
         public bool IsSelectedForPerformance()
         {
-            if (_selectedOptimizsationOption == "Quality")
-            {
-                EventManager.SetPerformanceMode(false);
-                return false;
-            }
-            if (_selectedOptimizsationOption == "Performance")
-            {
-                EventManager.SetPerformanceMode(true);
-                return true;
-            }
-
-            return true;
+            //...ect
         }
         public void DropdownOptimization(int arg)
         {
-            int selectedIndex = 0;
-
-            selectedIndex = _UIDropdownsCached[(int)UIDropdownID.Dropdowm_Optimization].value;
-            _selectedOptimizsationOption = _UIDropdownsCached[(int)UIDropdownID.Dropdowm_Optimization].options[selectedIndex].text;
-
-            //print("\n" + _selectedOptimizsationOption);
-            if (_selectedOptimizsationOption == "Performance")
-                EventManager.SetPerformanceMode(true);
-            //bool b = false;
-
-            //if (_selectedOptimizsationOption == "Quality") b = false;
-            //if (_selectedOptimizsationOption == "Performance") b = true;
-
-            //if (_fieldGenerator != null)
-            //    _fieldGenerator.SetOptimizationFlag(b);
+            //...ect
         }
         public void DropdownFieldCountValueChanged(int arg)
         {
@@ -2233,16 +1525,7 @@ namespace IsometricFarmGenerator
                 AddFieldGridSize(dropDownId - 1, 20, 20);
                 return;
             }
-            //if (_selectedFieldGridSize == "Extra Large")
-            //{
-            //    AddFieldGridSize(dropDownId - 1, 25, 25);
-            //    return;
-            //}
-            //if (_selectedFieldGridSize == "Massive")
-            //{
-            //    AddFieldGridSize(dropDownId - 1, 30, 30);
-            //    return;
-            //}
+
         }
         public void DropdownFieldSoilTypeValueChanged()//int dropDownId)
         {
@@ -2375,16 +1658,7 @@ namespace IsometricFarmGenerator
 
             _cursorController = _cursorObj.GetComponent<CursorController>();
             _cursorObj.SetActive(false);
-            //if (_cursorActiveDic == null) _cursorActiveDic = new Dictionary<UICursorID, CursorController>();
 
-            //for (int i = 0; i <  _cursorObjs.Length; i++)
-            //{
-            //_cursorActiveDic.Add(UICursorID.Cursor_Plat_Hedgerow, _cursorObjs[i].GetComponent<CursorController>());
-            //_cursorActiveDic.Add(UICursorID.Cursor_Plat_SpadeDig, _cursorObjs[i].GetComponent<CursorController>());
-            //_cursorObjs[i].SetActive(false);      
-            //}
-            //_cursorActiveDic.Add(UICursorID.Cursor_Plat_Hedgerow, false);
-            //_cursorActiveDic[(int)UICursorID.Cursor_Plat_Hedgerow] = false;
         }
         private void InitDropdowns()
 		{
