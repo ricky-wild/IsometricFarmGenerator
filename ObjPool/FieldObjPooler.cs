@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -109,12 +109,7 @@ namespace IsometricFarmGenerator
 			for (int i = 0; i < _poolSizeWaterpoolPlacementObj; i++) AddGameObject(PooledObjID.Waterpool_Placement_Obj);
 			for (int i = 0; i < _poolSizeLilypadPondPlacementObj; i++) AddGameObject(PooledObjID.LilypadPond_Placement_Obj);
 
-			//{
-			//	AddGameObject(PooledObjID.Default_Placement_FX);
-			//	AddGameObject(PooledObjID.Correct_Placement_Award_FX);
-			//	AddGameObject(PooledObjID.Default_Removal_FX);
-			//	AddGameObject(PooledObjID.Grass_Growth_FX);
-			//}
+
 		}
 
 		private void AddGameObject(PooledObjID pooledObjID)
@@ -155,38 +150,6 @@ namespace IsometricFarmGenerator
 			return null;
 		}
 
-		//private GameObject GetPooledObject(PooledObjID pooledObjID)
-		//{
-		//	if (_pooledObjsDict == null) return null;
-		//	List<GameObject> list;
-		//	for (int i = 0; i < _pooledObjsDict.Count; i++)
-		//	{
-		//		list = _pooledObjsDict[pooledObjID];
-		//		for (int j = 0; j < list.Count; j++)
-		//		{
-		//			if (_pooledObjsDict[pooledObjID][j] != null)
-		//			{
-		//				return _pooledObjsDict[pooledObjID][j];
-		//				//if (!_pooledObjsDict[pooledObjID][j].activeInHierarchy)
-		//				//{
-		//				//    return _pooledObjsDict[pooledObjID][j];
-		//				//}
-		//				//else
-		//				//{
-
-		//				//}
-		//			}
-
-		//		}
-
-		//	}
-		//	//return null;
-		//	print("\nInstantiating from obj pool!");
-		//	GameObject newGameObject = (GameObject)Instantiate(_prefabGameObjects[(int)pooledObjID]);
-		//	_pooledObjsDict[pooledObjID].Add(newGameObject);
-		//	return newGameObject;
-
-		//}
 
 		public GameObject InstantiateObj(PooledObjID pooledObjID, Transform positionToSpawn, Quaternion q)
 		{
