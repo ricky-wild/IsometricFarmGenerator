@@ -1,9 +1,22 @@
 
-Agroecology Calculator. 
+Agroecology Capital Calculator
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
+This is a subset of the baseline source code, with specific segments omitted for clarity and privacy.
+
+WebGL live build here: https://wildscript.co.uk/projectCard01.html
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 © Ricky Wild 2025. All rights reserved.
 
-This Unity project and all associated code, scripts, and original assets (the “Software”) are proprietary and are not licensed for use, distribution, modification, or reuse.
+This project and all associated code, scripts, and original assets (the “Software”) are proprietary and are not licensed for use, distribution, modification, or reuse.
 
 You may not copy, modify, redistribute, or use any part of this Software without express written permission from the author.
 
@@ -13,4 +26,4 @@ Unauthorized use of this project or its components may result in legal action.
 
 
 
-WebGL alpha build here: https://wildscript.co.uk/projectCard01.html
+
